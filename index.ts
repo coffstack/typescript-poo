@@ -1,24 +1,9 @@
-import {
-  getAge,
-  getFullName,
-  Person,
-  updateFirstName,
-} from "./banking/Person-functional";
+import { Person } from "./banking/Person";
 
 function main() {
-  const maria: Person = {
-    firstName: "Maria",
-    lastName: "da Silva",
-    birthDate: new Date("1999-01-15"), //YYYY-MM-DD
-  };
+  const maria = new Person("Maria", "da Silva", new Date("1999-01-15"));
 
-  console.log(getFullName(maria));
-
-  console.log(getAge(maria));
-
-  const updatedMaria = updateFirstName(maria, "Maria Clara");
-
-  console.log(updatedMaria);
+  console.log(maria);
 }
 
 main();
