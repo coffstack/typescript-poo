@@ -7,6 +7,11 @@ function main() {
 
   maria.updateFirstName("Maria Clara");
 
+  maria.getFullName();
+
+  //Property isBirthdayPassed is protected and only accessible within class  and its subclasses.
+  // maria.isBirthdayPassed();
+
   console.log(maria.getFullName());
 }
 
