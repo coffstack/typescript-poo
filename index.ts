@@ -3,16 +3,13 @@ import { Person } from "./banking/Person";
 function main() {
   const maria = new Person("Maria", "da Silva", new Date("1999-01-15"));
 
-  console.log(maria.getFullName());
+  //maria.firstName
 
-  maria.updateFirstName("Maria Clara");
+  // maria.firstName = "Maria Clara"
+  maria.firstName = "";
 
-  maria.getFullName();
-
-  //Property isBirthdayPassed is protected and only accessible within class  and its subclasses.
-  // maria.isBirthdayPassed();
-
-  console.log(maria.getFullName());
+  // console.log(maria.getFirstName());
+  console.log(maria.fullName);
 }
 
 main();

@@ -1,15 +1,26 @@
 export class Person {
-  private firstName: string;
-  lastName: string;
+  private _firstName: string;
+  public lastName: string;
   birthDate: Date;
 
   constructor(firstName: string, lastName: string, birthDate: Date) {
-    this.firstName = firstName;
+    this._firstName = firstName;
     this.lastName = lastName;
     this.birthDate = birthDate;
   }
 
-  getFullName(): string {
+  get firstName() {
+    // return this.firstName.toUpperCase();
+    return this._firstName;
+  }
+
+  set firstName(name: string) {
+    if (name.length > 0) {
+      this._firstName = name;
+    }
+  }
+
+  get fullName(): string {
     return `${this.firstName} ${this.lastName}`;
   }
 
@@ -28,20 +39,5 @@ export class Person {
       (today.getMonth() === this.birthDate.getMonth() &&
         today.getDate() >= this.birthDate.getDate())
     );
-  }
-
-  updateFirstName(firstName: string): void {
-    this.firstName = firstName;
-  }
-}
-
-class Player extends Person {
-  constructor(firstName: string, lastName: string, birthDate: Date) {
-    super(firstName, lastName, birthDate);
-  }
-
-  method1() {
-    this.getFullName();
-    this.isBirthdayPassed();
   }
 }
