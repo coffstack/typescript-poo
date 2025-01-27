@@ -3,7 +3,7 @@ import { Person } from "./Person";
 // super class
 export class BankAccount {
   private holder: Person; // composition (composição)
-  private _balance: number; // saldo - $100
+  protected _balance: number; // saldo - $100
   private accountNumber: string; // número da conta
 
   constructor(person: Person, initialBalance: number, accountNumber: string) {
@@ -26,10 +26,18 @@ export class BankAccount {
   withdraw(amount: number): void {
     if (amount > 0 && amount <= this._balance) {
       this._balance -= amount;
-      console.log(`Withdrew $${amount}. New balance: $${this._balance}\n`);
+      this.logSuccessWithDraw(amount);
     } else {
-      console.log("Invalid withdrawal amount or insufficient funds.\n");
+      this.logInvalidWithDraw();
     }
+  }
+
+  protected logSuccessWithDraw(amount: number) {
+    console.log(`Withdrew $${amount}. New balance: $${this._balance}\n`);
+  }
+
+  protected logInvalidWithDraw() {
+    console.log("Invalid withdrawal amount or insufficient funds.\n");
   }
 
   get balance(): number {

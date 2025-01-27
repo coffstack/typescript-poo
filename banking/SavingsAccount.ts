@@ -13,6 +13,10 @@ export class SavingsAccount extends BankAccount {
     super(person, initialBalance, accountNumber);
     this.interestRate = interestRate;
   }
-}
 
-export class CurrentAccount extends BankAccount {}
+  addInterest(): void {
+    const interest = this.balance * (this.interestRate / 100);
+    this.deposit(interest);
+    console.log(`Interest added: $${interest}. New Balance: $${this.balance}`);
+  }
+}
