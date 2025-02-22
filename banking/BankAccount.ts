@@ -1,7 +1,7 @@
 import { Person } from "./Person";
 
 // super class
-export class BankAccount {
+export abstract class BankAccount {
   private holder: Person; // composition (composição)
   protected _balance: number; // saldo - $100
   private accountNumber: string; // número da conta
@@ -22,6 +22,8 @@ export class BankAccount {
     }
   }
 
+  abstract get accountType(): string;
+
   // sacar
   withdraw(amount: number): void {
     if (amount > 0 && amount <= this._balance) {
@@ -33,11 +35,15 @@ export class BankAccount {
   }
 
   protected logSuccessWithDraw(amount: number) {
-    console.log(`Withdrew $${amount}. New balance: $${this._balance}\n`);
+    console.log(
+      `${this.accountType}: Withdrew $${amount}. New balance: $${this._balance}\n`
+    );
   }
 
   protected logInvalidWithDraw() {
-    console.log("Invalid withdrawal amount or insufficient funds.\n");
+    console.log(
+      `${this.accountType}: Invalid withdrawal amount or insufficient funds.\n`
+    );
   }
 
   get balance(): number {

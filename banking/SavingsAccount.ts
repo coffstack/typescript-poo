@@ -4,6 +4,7 @@ import { Person } from "./Person";
 // subclass
 export class SavingsAccount extends BankAccount {
   private interestRate: number; // taxa de juros
+  accountType = "SavingsAccount";
   constructor(
     person: Person,
     initialBalance: number,

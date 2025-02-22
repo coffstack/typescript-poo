@@ -28,6 +28,10 @@ export class CurrentAccount extends BankAccount implements PaymentMethod {
     return this._balance;
   }
 
+  get accountType() {
+    return "CurrentAccount";
+  }
+
   override withdraw(amount: number): void {
     const totalLimit = this._balance + this.overdraftLimit;
     if (amount > 0 && amount <= totalLimit) {
