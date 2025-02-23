@@ -5,13 +5,8 @@ import { Person } from "./Person";
 export class CurrentAccount extends BankAccount implements PaymentMethod {
   private overdraftLimit: number;
 
-  constructor(
-    person: Person,
-    initialBalance: number,
-    accountNumber: string,
-    overdraftLimit: number
-  ) {
-    super(person, initialBalance, accountNumber);
+  constructor(person: Person, initialBalance: number, overdraftLimit: number) {
+    super(person, initialBalance);
     this.overdraftLimit = overdraftLimit;
   }
 

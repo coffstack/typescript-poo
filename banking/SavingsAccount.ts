@@ -5,13 +5,8 @@ import { Person } from "./Person";
 export class SavingsAccount extends BankAccount {
   private interestRate: number; // taxa de juros
   accountType = "SavingsAccount";
-  constructor(
-    person: Person,
-    initialBalance: number,
-    accountNumber: string,
-    interestRate: number
-  ) {
-    super(person, initialBalance, accountNumber);
+  constructor(person: Person, initialBalance: number, interestRate: number) {
+    super(person, initialBalance);
     this.interestRate = interestRate;
   }
 

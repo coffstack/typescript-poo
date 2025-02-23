@@ -6,10 +6,26 @@ export abstract class BankAccount {
   protected _balance: number; // saldo - $100
   private accountNumber: string; // número da conta
 
-  constructor(person: Person, initialBalance: number, accountNumber: string) {
+  private static nextAccountNumber: number = 1;
+
+  constructor(person: Person, initialBalance: number) {
     this.holder = person;
     this._balance = initialBalance;
-    this.accountNumber = accountNumber;
+    this.accountNumber = BankAccount.generateAccountNumber();
+  }
+
+  private static generateAccountNumber(): string {
+    return (this.nextAccountNumber++).toString().padStart(6, "0");
+  }
+
+  /**
+   * Statistical method to validate an account number.
+   * We consider it valid if it is composed of exactly 6 digits.
+   * @param accountNumber
+   * @returns if `accountNumber` is valid
+   */
+  public static validateAccountNumber(accountNumber: string): boolean {
+    return /^\d{6}$/.test(accountNumber);
   }
 
   // depositar
